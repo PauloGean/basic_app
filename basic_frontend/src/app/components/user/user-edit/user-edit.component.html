@@ -1,0 +1,57 @@
+<div class="div-container">
+
+  <h2 *ngIf="!isNew">Editar Usuarios</h2>
+  <h2  *ngIf="isNew">Cadastrar Usuarios</h2>
+  <form #componentForm="ngForm" (ngSubmit)="!componentForm.valid || saveOrUpdate()" novalidate
+    fxLayoutAlign="center center">
+    <mat-card fxLayout="column" fxFlex="100%">
+      <div fxLayout="row" fxFlex="100%" fxLayoutAlign="start center" fxLayoutGap="30px">
+        <mat-form-field fxFlex="1 1 50%">
+          <input matInput type="email" id="email" name="email" [(ngModel)]="entityForm.email" required
+            placeholder="Email">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxFlex="100%" fxLayoutAlign="start center" fxLayoutGap="30px">
+        <mat-form-field fxFlex="1 1 50%">
+          <input matInput type="password" id="password" name="password" [(ngModel)]="entityForm.password" required
+            placeholder="Password">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="100%" fxLayoutGap="30px">
+        <mat-form-field fxFlex="1 1 100%">
+          <input matInput type="text" id="first_name" name="first_name" [(ngModel)]="entityForm.first_name" required
+            placeholder="Nome">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxFlex="100%" fxLayoutGap="30px">
+
+        <mat-form-field fxFlex="1 1 100%">
+          <input matInput type="text" id="last_name" name="last_name" [(ngModel)]="entityForm.last_name" required
+            placeholder="Sobrenome">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="100%" fxLayoutGap="30px">
+        <mat-checkbox id="is_active" name="is_active" [(ngModel)]="entityForm.is_active">Está ativo</mat-checkbox>
+      </div>
+
+      <div fxLayout="row" fxFlex="100%" fxLayoutGap="30px">
+        <mat-checkbox id="is_superuser" name="is_superuser" [(ngModel)]="entityForm.is_superuser">É admininstrador</mat-checkbox>
+      </div>
+
+
+
+
+
+
+      <div fxFlex="90%" fxLayout="row" fxLayoutAlign="end center" class="alternate-theme">
+        <button mat-raised-button class="bt-button" color="basic" type="button" (click)="cancel()">Cancelar</button>
+        <button mat-raised-button class="bt-button" color="primary" type="submit">Salvar</button>
+      </div>
+    </mat-card>
+  </form>
+
+
+
+</div>

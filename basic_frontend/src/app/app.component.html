@@ -2,13 +2,13 @@
 
     <button mat-button routerLink="/">{{title}}</button>
 
-    <button mat-button *ngIf="isAuthenticated"  routerLink="/user">
-      <mat-icon>devices</mat-icon>
+    <button mat-button *ngIf="isAuthenticated"  routerLink="/user-list">
+      <mat-icon>supervisor_account</mat-icon>
       Usuarios
     </button>
 
     <button mat-button *ngIf="isAuthenticated"  routerLink="/userchart">
-      <mat-icon>devices</mat-icon>
+      <mat-icon>insert_chart</mat-icon>
       Graficos
     </button>
     

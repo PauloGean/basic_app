@@ -7,5 +7,5 @@ export class User {
     public email: string;
     public is_active:boolean;
     public is_superuser:boolean;   
-
+    public password: string;
 }

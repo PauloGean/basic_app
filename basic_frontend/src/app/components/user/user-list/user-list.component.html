@@ -15,7 +15,8 @@
     </mat-select>
   </mat-form-field> -->
 
-  <button  style="margin-left: 30px;" mat-raised-button color="primary" (click)="search()">Buscar</button>
+  <button  style="margin-left: 30px;" mat-raised-button color="basic" (click)="search()">Buscar</button>
+  <button  style="margin-left: 30px;" mat-raised-button color="primary" routerLink="/user/new">Novo Usuário</button>
 
 </mat-card>
 
@@ -54,6 +55,19 @@
       <th mat-header-cell *matHeaderCellDef>Admin</th>
       <td mat-cell *matCellDef="let element">
         <app-check-icons [value]="element.is_superuser"></app-check-icons>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>#</th>
+      <td mat-cell *matCellDef="let element">
+        <button 
+        mat-button
+        routerLink="/user/{{element.id}}">
+        <mat-icon  class="icon-green" aria-hidden="false">edit</mat-icon>
+      </button>
+      <button   mat-button>
+        <mat-icon  class="icon-red" aria-hidden="false">delete</mat-icon>
+      </button>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>

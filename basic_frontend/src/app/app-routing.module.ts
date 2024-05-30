@@ -3,18 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/auth/auth.guard';
-import { UserComponent } from './components/user/user.component';
+import { UserListComponent } from './components/user/user-list/user-list.component';
 import { UserChartComponent } from './components/user-chart/user-chart.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 
 const routes: Routes = [
   {
-    path: 'user',
-    component: UserComponent,
+    path: 'user-list',
+    component: UserListComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'user/:id', component: UserEditComponent,
     canActivate: [ AuthGuard ]
   },
   {
     path: 'userchart',
-    component: UserChartComponent,
+    component: HomeComponent,
     canActivate: [ AuthGuard ]
   },
 
@@ -25,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: UserComponent,
+    component: HomeComponent,
     canActivate: [ AuthGuard ]
 
   },

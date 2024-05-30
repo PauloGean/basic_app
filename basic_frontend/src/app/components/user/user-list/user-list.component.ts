@@ -8,22 +8,21 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class UserComponent {
+export class UserListComponent {
 
   public userList:User[];
 
-  public displayedColumns: string[] = ['email', 'first_name', 'last_name','is_active','is_superuser'];
+  public displayedColumns: string[] = ['email', 'first_name', 'last_name','is_active','is_superuser','actions'];
   public selection = new SelectionModel<User>(true, []);
   public dataSource = new MatTableDataSource<User>([]);
   @ViewChild(MatPaginator, {static: true})
   public paginator: MatPaginator;
   wsFileLog: Subscription;
 
-  public varLib="";
 
   constructor(
     private service:UserService,

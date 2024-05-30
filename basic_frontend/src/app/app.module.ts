@@ -12,8 +12,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth-interceptor.service';
 import { CheckIconsComponent } from './components/check-icons/check-icons.component';
 import { ToastrModule } from 'ngx-toastr';
-import { UserComponent } from './components/user/user.component';
+import { UserListComponent } from './components/user/user-list/user-list.component';
 import { UserChartComponent } from './components/user-chart/user-chart.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+
 
 
 
@@ -23,7 +25,8 @@ import { UserChartComponent } from './components/user-chart/user-chart.component
     LoginComponent,
     HomeComponent,
     UserChartComponent,
-    UserComponent,
+    UserListComponent,
+    UserEditComponent,
     CheckIconsComponent
   ],
   imports: [

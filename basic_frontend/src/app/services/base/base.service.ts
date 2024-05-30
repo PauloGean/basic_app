@@ -48,5 +48,24 @@ export class BaseService<T>  {
     const params = this.parameters;
     return this.http.get<PaginatedResult<T>>(this.baseUrl,{params});
   }
+
+  public getById(id: number): Observable<T> {
+    return this.http.get<T>(this.baseUrl.concat(String(id) + '/'));
+  }
+
+  public save(entity: T): Observable<T> {
+    this.clearParameter();
+    return this.http.post<T>(this.baseUrl, entity);
+  }
+  
+  public delete(id: number): any {
+    this.clearParameter();
+    return this.http.delete(this.baseUrl.concat(String(id) + '/'));
+  }
+
+  public update(id: number, body: any): Observable<T> {
+    this.clearParameter();
+    return this.http.patch<T>(this.baseUrl.concat(String(id) + '/'), body);
+  }
  
 }

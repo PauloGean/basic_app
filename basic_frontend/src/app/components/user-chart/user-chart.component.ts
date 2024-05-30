@@ -10,8 +10,10 @@ import {
 } from '@angular/core';
 import * as d3 from 'd3';
 import { ScaleBand } from 'd3';
+import { UserReport } from 'src/app/models/user-report.model';
+import { UserService } from 'src/app/services/user.service';
 @Component({
-  selector: 'user-chart-home',
+  selector: 'user-chart',
   templateUrl: './user-chart.component.html',
   styleUrls: ['./user-chart.component.css']
 })
@@ -34,32 +36,61 @@ export class UserChartComponent  implements AfterViewInit, OnChanges {
   @ViewChild('svgContainer', { read: ElementRef, static: true })
   svgContainerRef!: ElementRef<HTMLDivElement>;
 
-  constructor() {
-    this.barColors = ['#a9ce97', '#a5b5de'];
-    this.domain = [100, 1000];
+  constructor(private service:UserService,) {
+    this.barColors = ['#c14f4f','#a9ce97', '#a5b5de'];
     this.data = [
       {
-        name: 'Row1',
+        name: 'Admin',
         series: [
-          { name: 'Bar1', value: 150 },
-          { name: 'Bar2', value: 200 },
+          { name: 'Ativos', value: 0 },
+          { name: 'Inativos', value: 0 },
         ],
       },
       {
-        name: 'Row2',
+        name: 'Comum',
         series: [
-          { name: 'Bar1', value: 300 },
-          { name: 'Bar2', value: 400 },
+          { name: 'Ativos', value: 0 },
+          { name: 'Inativos', value: 0 },
         ],
-      },
-      {
-        name: 'Row3',
-        series: [
-          { name: 'Bar1', value: 500 },
-          { name: 'Bar2', value: 1000 },
-        ],
-      },
+      }
     ];
+    this.service.report().subscribe(response => {
+        console.log(response)
+        const sum = response.reduce((sum, current) => sum + current.total, 0);
+        this.domain = [0, sum]
+        this.data = this.toData(response);
+        this.createChart();
+    });
+
+   
+    
+  }
+
+  private toData( response: UserReport[]) {
+    const admin_active =  this.getTotal(response, true, true);
+    const admin_inactive =  this.getTotal(response, true, false);
+    const common_active =  this.getTotal(response, false, true);
+    const common_inactive =  this.getTotal(response, false, false);
+    return [
+      {
+        name: 'Admin',
+        series: [
+          { name: 'Ativos', value: admin_active },
+          { name: 'Inativos', value: admin_inactive },
+        ],
+      },
+      {
+        name: 'Comum',
+        series: [
+          { name: 'Ativos', value: common_active },
+          { name: 'Inativos', value: common_inactive },
+        ],
+      }
+    ];
+  }
+
+  private getTotal(response: UserReport[], is_superuser, is_active) {
+    return response.filter(item => item.is_superuser == is_superuser && item.is_active == is_active).reduce((sum, current) => sum + current.total, 0);
   }
 
   @HostListener('window:resize')
@@ -201,26 +232,27 @@ export class UserChartComponent  implements AfterViewInit, OnChanges {
           { name: string; series: { name: string; value: number } }
         >('g.bar-group')
         .data(this.data);
+        
       barGroup.exit().remove();
       barGroup = barGroup
         .enter()
         .append('g')
         .attr('class', 'bar-group')
         .merge(barGroup)
-        .attr('transform', (d) => `translate(${xScale(d.name)}, 0)`);
+        .attr('transform', (d:any) => `translate(${xScale(d.name)}, 0)`);
 
       let barRects = barGroup
         .selectAll<SVGRectElement, { name: string; value: number }>('rect.bar')
-        .data((d) => d.series.map((item) => item));
+        .data((d:any) => d.series.map((item) => item));
       barRects
         .enter()
         .append('rect')
         .merge(barRects)
         .attr('class', 'bar')
         .attr('width', x1Scale.bandwidth())
-        .attr('height', (d) => height - y(d.value))
+        .attr('height', (d:any) => height - y(d.value))
         .attr('x', (d: any) => x1Scale(d.name))
-        .attr('y', (d) => y(d.value))
+        .attr('y', (d:any) => y(d.value))
         .attr('fill', (d, i) => this.barColors[i]);
 
       let yAxis = chartWrap
