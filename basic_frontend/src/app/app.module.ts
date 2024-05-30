@@ -13,6 +13,7 @@ import { AuthInterceptor } from './auth-interceptor.service';
 import { CheckIconsComponent } from './components/check-icons/check-icons.component';
 import { ToastrModule } from 'ngx-toastr';
 import { UserComponent } from './components/user/user.component';
+import { UserChartComponent } from './components/user-chart/user-chart.component';
 
 
 
@@ -21,6 +22,7 @@ import { UserComponent } from './components/user/user.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
+    UserChartComponent,
     UserComponent,
     CheckIconsComponent
   ],

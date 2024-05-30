@@ -6,6 +6,11 @@
       <mat-icon>devices</mat-icon>
       Usuarios
     </button>
+
+    <button mat-button *ngIf="isAuthenticated"  routerLink="/userchart">
+      <mat-icon>devices</mat-icon>
+      Graficos
+    </button>
     
     <span class="example-spacer"></span>
 
