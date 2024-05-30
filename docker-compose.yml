@@ -1,0 +1,39 @@
+version:  "3.3"
+services:
+
+  postgres:
+    restart: always
+    image: postgres:13.3-buster
+    hostname: postgres
+    ports:
+      - 5437:5432
+    expose:
+      - 5437
+    environment:
+      - POSTGRES_DB=basic_db
+      - POSTGRES_PASSWORD=password123
+    volumes:
+      - db_data_basic_app:/var/lib/postgresql/data
+    
+  backend:
+    build: ./basic_backend/
+    image: basic_backend:1.0
+    command: ["sh","-c", "python manage.py migrate &&  python manage.py createsuperuserwithpassword --username indt --first_name indt  --last_name indt  --password indt  --email indt@indt.org --preserve && python manage.py runserver 0.0.0.0:8000"]
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    ports:
+      - 8009:8000
+    links:
+      - postgres
+
+  front:
+    build: ./basic_frontend/
+    image: basic_frontend:1.0
+    ports:
+      - 80:80
+    restart: always
+
+
+volumes:
+  db_data_basic_app:

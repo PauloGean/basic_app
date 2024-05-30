@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+
+    <button mat-button routerLink="/">{{title}}</button>
+
+    <button mat-button *ngIf="isAuthenticated"  routerLink="/user">
+      <mat-icon>devices</mat-icon>
+      Usuarios
+    </button>
+    
+    <span class="example-spacer"></span>
+
+    <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+
+  
+</mat-toolbar>
+<router-outlet></router-outlet>
