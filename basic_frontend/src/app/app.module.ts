@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { UserChartComponent } from './components/user-chart/user-chart.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 
 
@@ -27,7 +28,8 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
     UserChartComponent,
     UserListComponent,
     UserEditComponent,
-    CheckIconsComponent
+    CheckIconsComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

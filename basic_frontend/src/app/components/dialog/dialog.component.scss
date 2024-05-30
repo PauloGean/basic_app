@@ -1,0 +1,28 @@
+::ng-deep .mat-dialog-actions {
+  color: #0a0096;
+
+}
+
+.mat-button {
+  font-weight: bold;
+}
+
+.dialog-component {
+  font-size: 18px;
+  padding: 5px 30px;
+
+}
+
+.dialog-title {
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 30px;
+
+}
+
+.dialog-subTitle {
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.54);
+}

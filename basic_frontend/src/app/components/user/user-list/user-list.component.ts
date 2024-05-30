@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../dialog/dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -27,6 +29,7 @@ export class UserListComponent {
   constructor(
     private service:UserService,
     private toastr: ToastrService,
+    public dialog: MatDialog
   
   ) {     this.search();
 
@@ -43,6 +46,20 @@ export class UserListComponent {
     });
   }
 
+  public delete(entity: User): void {
+    const dialogRef = this.dialog.open(DialogComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'data') {
+        this.service.delete(entity.id).subscribe(
+          (response) => {
+            this.toastr.success("Usuario removido com sucesso");
+             this.search();
+          },
+          ex => {
+          });
+      }
+    });
+  }
 
 }

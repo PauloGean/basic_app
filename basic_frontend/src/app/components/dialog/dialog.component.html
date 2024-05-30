@@ -1,0 +1,11 @@
+<div class="dialog-component">
+  <h2 mat-dialog-title class="dialog-title" >{{title}}</h2>
+  <div class="dialog-subTitle" >{{subTitle}}</div>
+
+  <mat-dialog-content>{{description}}</mat-dialog-content>
+
+  <mat-dialog-actions fxLayoutAlign="end center">
+    <button  mat-button (click)="closeDialog()" tabindex="1">{{btCancel}}</button>
+    <button  mat-button mat-dialog-close="data" tabindex="2">{{btOk}}</button>
+  </mat-dialog-actions>
+</div>

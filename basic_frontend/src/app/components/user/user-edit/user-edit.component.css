@@ -9,3 +9,12 @@ table {
     flex: 1 1 auto;
   }
 
+.div-actions{
+  padding-top: 20px;
+  
+}
+
+
+.bt-button{
+  margin: 10px;
+}
