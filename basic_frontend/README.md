@@ -15,7 +15,7 @@ Abaixo telas do sistema
 <img src="user-list.png" alt="Login">
 
 ## Cadastro/Edição de Usuário
-<img src="user-edit.png" alt="Login">
+<img src="user-edit.PNG" alt="Login">
 
 
 ## 💻 Pré-requisitos
