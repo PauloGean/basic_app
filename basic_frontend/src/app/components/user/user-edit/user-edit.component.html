@@ -5,45 +5,45 @@
   <form #componentForm="ngForm" (ngSubmit)="!componentForm.valid || saveOrUpdate()" novalidate
    >
     <mat-card fxLayout="column" >
-      
+      <div >
         <mat-form-field >
-          <input matInput type="email" id="email" name="email" [(ngModel)]="entityForm.email" required
+          <input matInput type="email" id="email" name="email" [disabled]="!isEditable()" [(ngModel)]="entityForm.email" required
             placeholder="Email">
         </mat-form-field>
     
-
+      </div>
       <div >
         <mat-form-field >
-          <input matInput type="password" id="password" name="password" [(ngModel)]="entityForm.password" required
+          <input matInput type="password" id="password" name="password" [disabled]="!isEditablePassword()" [(ngModel)]="password" [required] ='isNew'
             placeholder="Password">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field >
-          <input matInput type="text" id="first_name" name="first_name" [(ngModel)]="entityForm.first_name" required
+          <input matInput type="text" id="first_name" name="first_name" [disabled]="!isEditable()" [(ngModel)]="entityForm.first_name" required
             placeholder="Nome">
         </mat-form-field>
       </div>
 
       <div>
         <mat-form-field >
-          <input matInput type="text" id="last_name" name="last_name" [(ngModel)]="entityForm.last_name" required
+          <input matInput type="text" id="last_name" name="last_name" [disabled]="!isEditable()" [(ngModel)]="entityForm.last_name" required
             placeholder="Sobrenome">
         </mat-form-field>
       </div>
-      
+
       <div>
-        <mat-checkbox id="is_active" name="is_active" [(ngModel)]="entityForm.is_active">Está ativo</mat-checkbox>
+        <mat-checkbox id="is_active" name="is_active" [disabled]="!isEditableStatus()" [(ngModel)]="entityForm.is_active">Está ativo</mat-checkbox>
       </div>
 
       <div>
-        <mat-checkbox id="is_superuser" name="is_superuser" [(ngModel)]="entityForm.is_superuser">É admininstrador</mat-checkbox>
+        <mat-checkbox id="is_superuser" name="is_superuser" [disabled]="!isEditableStatus()" [(ngModel)]="entityForm.is_superuser">É admininstrador</mat-checkbox>
       </div>
 
 
       <div class="div-actions">
         <button mat-raised-button class="bt-button" color="basic" type="button" (click)="cancel()">Cancelar</button>
-        <button mat-raised-button class="bt-button" color="primary" type="submit">Salvar</button>
+        <button mat-raised-button class="bt-button" color="primary" type="submit" [disabled]="!componentForm.valid || !(isEditable() || isEditablePassword())">Salvar</button>
       </div>
     </mat-card>
   </form>

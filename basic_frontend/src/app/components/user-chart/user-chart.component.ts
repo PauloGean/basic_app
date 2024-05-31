@@ -37,7 +37,7 @@ export class UserChartComponent  implements AfterViewInit, OnChanges {
   svgContainerRef!: ElementRef<HTMLDivElement>;
 
   constructor(private service:UserService,) {
-    this.barColors = ['#c14f4f','#a9ce97', '#a5b5de'];
+    this.barColors = ['#a9ce97', '#c14f4f'];
     this.data = [
       {
         name: 'Admin',

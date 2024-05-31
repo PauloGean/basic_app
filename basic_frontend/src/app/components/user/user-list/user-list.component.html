@@ -5,18 +5,16 @@
 
 
 <mat-card class="card-filter">
-  <!-- <mat-form-field fxFlex="1 1 100%" >
-    <mat-select placeholder="Computador"
-                [(ngModel)]="computerFilter">
-      <mat-option [value]="0">Todos</mat-option>
-      <mat-option *ngFor="let item of computers" [value]="item.id">
-        {{ item.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> -->
-
-  <button  style="margin-left: 30px;" mat-raised-button color="basic" (click)="search()">Buscar</button>
-  <button  style="margin-left: 30px;" mat-raised-button color="primary" routerLink="/user/new">Novo Usuário</button>
+  <div>
+    <mat-form-field >
+      <input matInput type="text" id="email" name="email"  [(ngModel)]="email"  
+        placeholder="Buscar por Email">
+    </mat-form-field>
+    <button  style="margin-left: 30px;" mat-raised-button color="basic" (click)="search()">Buscar</button>
+  </div>
+  <div>
+    <button  style="margin-left: 30px;" mat-raised-button color="primary" [disabled]="!isEditable()" routerLink="/user/new">Novo Usuário</button>
+  </div>
 
 </mat-card>
 

@@ -4,14 +4,17 @@ from basic_app.models import CustomUser
 from basic_app import serializers
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from . import filters
 
 
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = CustomUser.objects.all()
+    queryset = CustomUser.objects.all().order_by('email')
     serializer_class = serializers.UserSerializer
+    filter_class = filters.CustomUserFilter
+
     # permission_classes = [permissions.IsAuthenticated]
 
     def retrieve(self, request, *args, **kwargs):
@@ -23,7 +26,7 @@ class UserViewSet(viewsets.ModelViewSet):
         return super(UserViewSet, self).update(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        self.serializer_class = serializers.UserSerializeDetail
+        self.serializer_class = serializers.UserPasswordSerializer
         return super(UserViewSet, self).create(request, *args, **kwargs)
 
     @action(detail=False)

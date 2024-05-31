@@ -18,6 +18,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class UserListComponent {
 
   public userList:User[];
+  public email = '';
 
   public displayedColumns: string[] = ['email', 'first_name', 'last_name','is_active','is_superuser','actions'];
   public selection = new SelectionModel<User>(true, []);
@@ -40,7 +41,9 @@ export class UserListComponent {
 
   public search():void{
     this.service.clearParameter();
-
+    if(this.email){
+      this.service.addParameter('email', this.email);
+    }
     this.service.getAll().subscribe(response => {
       this.userList = response;
       this.dataSource = new MatTableDataSource<User>( this.userList);
@@ -48,8 +51,12 @@ export class UserListComponent {
     });
   }
 
+  public isEditable(){
+    return this.authService.isUserAdmin();
+  }
+
   public isDeletable(entity: User){
-    return this.authService.getUserAuth().user_id!==entity.id;
+    return this.authService.getUserAuth().user_id!==entity.id && this.authService.isUserAdmin();
   }
 
   public delete(entity: User): void {

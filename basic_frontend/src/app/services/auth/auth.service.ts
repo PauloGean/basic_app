@@ -85,6 +85,8 @@ export class AuthService  {
  
   public logout() {
     localStorage.setItem('user_auth', null);
+    localStorage.setItem('user_admin', null);
+
     this._authSub$.next(false);
     this._router.navigate(['login']);
 
@@ -104,6 +106,14 @@ export class AuthService  {
 
   public saveUserAuth(token_decoded: UserAuth){
     localStorage.setItem('user_auth', JSON.stringify(token_decoded));
+  }
+
+  public saveUserAdmin(isAdmin: boolean){
+    localStorage.setItem('user_admin', isAdmin?'true':'false');
+  }
+
+  public isUserAdmin(){
+    return localStorage.getItem('user_admin')==='true';
   }
 
   public getUserAuth(): UserAuth{

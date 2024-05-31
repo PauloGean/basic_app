@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-user-Matedit',
@@ -19,6 +20,7 @@ export class UserEditComponent implements OnInit {
   entityForm: User = {} as User;
   form: NgForm;
   isNew = false;
+  password='';
 
 
 
@@ -26,7 +28,9 @@ export class UserEditComponent implements OnInit {
     private service: UserService,
     private toastr: ToastrService,
     protected router: Router,
-    protected route: ActivatedRoute
+    protected route: ActivatedRoute,
+    private authService: AuthService
+
 
   ) {
 
@@ -64,6 +68,9 @@ export class UserEditComponent implements OnInit {
     return true;
   }
   public saveOrUpdate(): void {
+    if(this.password.trim()!==''){
+      this.entityForm.password=this.password;
+    }
     if (this.is_valid(this.entityForm)) {
       if (!this.entityForm.id) {
         this.service.save(this.entityForm).subscribe(
@@ -94,8 +101,17 @@ export class UserEditComponent implements OnInit {
     this.toastr.error("Erro salvar usuário", ex);
 
   }
+  public isEditablePassword(){
+    return this.authService.isUserAdmin() || this.authService.getUserAuth().user_id==this.entityForm.id;
+  }
 
+  public isEditable(){
+    return this.authService.isUserAdmin();
+  }
 
+  public isEditableStatus(){
+    return this.authService.isUserAdmin() && this.authService.getUserAuth().user_id!==this.entityForm.id;
+  }
 
 
   public postCreate() {
