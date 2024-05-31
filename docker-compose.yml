@@ -18,6 +18,7 @@ services:
   backend:
     build: ./basic_backend/
     image: basic_backend:1.0
+    restart: always
     command: ["sh","-c", "python manage.py migrate &&  python manage.py createsuperuserwithpassword --username indt --first_name indt  --last_name indt  --password indt  --email indt@indt.org --preserve && python manage.py runserver 0.0.0.0:8000"]
     environment:
       - DB_HOST=postgres
@@ -26,6 +27,8 @@ services:
       - 8009:8000
     links:
       - postgres
+    depends_on:
+      - postgres
 
   front:
     build: ./basic_frontend/
@@ -33,6 +36,8 @@ services:
     ports:
       - 80:80
     restart: always
+    depends_on:
+      - backend
 
 
 volumes:

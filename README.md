@@ -1,4 +1,4 @@
-# BasicFrontend
+# Basic APP
 
 Se trata de um sistema de gerenciamento de usuários. Possui um gráfico quantitativo de usuários ativos e cancelados separados por perfil de usuário ADMIN ou COMUM.
 
