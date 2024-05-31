@@ -1,20 +1,5 @@
-from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 
-# Create your models here.
-
-
-from django.contrib.auth.models import AbstractUser, PermissionsMixin
-
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from django.core import validators
-# from django.utils.translation import ugettext_lazy as _
-import re
-
-import re
-
-from django.db import models
-from django.core import validators
 from django.utils import timezone
 from django.core.mail import send_mail
 from django.utils.translation import gettext_lazy as _
@@ -23,13 +8,10 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
-
 class UserManager(BaseUserManager):
 
     def _create_user(self, username, email, password,  is_superuser, **extra_fields):
         now = timezone.now()
-        # if not username:
-        #   raise ValueError(_('The given username must be set'))
         email = self.normalize_email(email)
         user = self.model(username=username,email=email,
                  is_active=True,

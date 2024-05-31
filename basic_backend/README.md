@@ -84,5 +84,19 @@ Você verá a seguinte tela:
 
 `http://localhost:8000/users`
 
-## Tela inicial não autenticada
-<img src="user.PNG" alt="Login">
+## Api Users
+<img src="user.PNG" alt="User">
+
+## Documentação API
+
+Para vizualizar o contrato e mais informações da api veja o REAME a seguir:
+
+[Documentação API](README-API.md).
+
+
+
+
+
+
+
+
