@@ -1,8 +1,11 @@
 ## 🚀 API
 
+Ao executar via docker a <api-base> = localhost:8009
+Ao executar pela ide ou via terminal a <api-base> = localhost:8000
+
 ## LOGIN
 `POST`
-`http://localhost:8000/auth/login/`
+`http://<api-base>/auth/login/`
 
 `Body`
 ```
@@ -28,7 +31,7 @@ Para a chamada das demais api usar o header a seguir:
 # USER API
 ### USER LIST
 `GET`
-`http://localhost:8000/users/`
+`http://<api-base>/users/`
 
 `Status` :`200` 
 
@@ -37,7 +40,7 @@ Para a chamada das demais api usar o header a seguir:
 [
     {
         "id": 5,
-        "url": "http://localhost:8000/users/5/",
+        "url": "http://<api-base>/users/5/",
         "email": "indt@indt.org",
         "first_name": "INDT",
         "last_name": "ADMIN",
@@ -46,7 +49,7 @@ Para a chamada das demais api usar o header a seguir:
     },
     {
         "id": 11,
-        "url": "http://localhost:8000/users/11/",
+        "url": "http://<api-base>/users/11/",
         "email": "paulogean10@gmail.com",
         "first_name": "PAULO",
         "last_name": "LOPES",
@@ -59,7 +62,7 @@ Para a chamada das demais api usar o header a seguir:
 
 ### USER CREATE
 `POST`
-`http://localhost:8000/users/`
+`http://<api-base>/users/`
 
 `Body`
 ```
@@ -80,7 +83,7 @@ Para a chamada das demais api usar o header a seguir:
 
 {
     "id": 17,
-    "url": "http://localhost:8000/users/17/",
+    "url": "http://<api-base>/users/17/",
     "email": "paulolopes@email.com",
     "first_name": "PAULO",
     "last_name": "LOPES",
@@ -91,7 +94,7 @@ Para a chamada das demais api usar o header a seguir:
 
 ### USER UPDATE
 `PUT`
-`http://localhost:8000/users/`
+`http://<api-base>/users/`
 
 `Body`
 ```
@@ -111,7 +114,7 @@ Para a chamada das demais api usar o header a seguir:
 
 {
     "id": 17,
-    "url": "http://localhost:8000/users/17/",
+    "url": "http://<api-base>/users/17/",
     "email": "paulolopes@email.com",
     "first_name": "PAULO",
     "last_name": "LOPES",
@@ -123,7 +126,7 @@ Para a chamada das demais api usar o header a seguir:
 
 ### USER DELETE
 `DELETE`
-`http://localhost:8000/users/<id_user>/`
+`http://<api-base>/users/<id_user>/`
 
 
 
@@ -134,7 +137,7 @@ Para a chamada das demais api usar o header a seguir:
 
 {
     "id": 17,
-    "url": "http://localhost:8000/users/17/",
+    "url": "http://<api-base>/users/17/",
     "email": "paulolopes@email.com",
     "first_name": "PAULO",
     "last_name": "LOPES",
@@ -146,7 +149,7 @@ Para a chamada das demais api usar o header a seguir:
 
 ### USER REPORT
 `GET`
-`http://localhost:8000/report_user/`
+`http://<api-base>/report_user/`
 
 `Status` :`200` 
 

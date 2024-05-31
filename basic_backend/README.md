@@ -78,7 +78,7 @@ Acessando o endereço:
 ## Tela inicial não autenticada
 <img src="api-login.PNG" alt="Login">
 
-Clique em Log In, e use o usuário criado anteriormente:
+Clique em Log In. Use o usuário criado anteriormente:
 
 Você verá a seguinte tela: 
 
