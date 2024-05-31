@@ -1,27 +1,47 @@
 # BasicFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+Se trata de um app front end com crud de usuário e gráfico quantativo, desenvolvido com angular.
+O sistema usa autenticação jwt e tratamentos por perfil. Usuário Admin e comum.
+Abaixo telas do sistema
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tela de Login
+<img src="login.png" alt="Login">
 
-## Code scaffolding
+## Gráfico Quantitativo de Usuários
+<img src="user-chart.png" alt="Login">
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Lista de Usuário
+<img src="user-list.png" alt="Login">
 
-## Build
+## Cadastro/Edição de Usuário
+<img src="user-edit.png" alt="Login">
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## 💻 Pré-requisitos
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-## Running end-to-end tests
+- Node JS Versão 13 ou Superior
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## 🚀 Instalando
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para instalar é necessário possuir nodejs , siga estas etapas:
+
+Após node js está instalado no computador primeiramente instale as dependencias com o seguinte comando:
+
+```
+npm install
+```
+
+## ☕ Usando 
+
+Para usar , siga estas etapas:
+Execute no terminal o seguinte comando
+
+```
+npm start
+```
+
+O sistema poderá ser acesso no seguinte endereço pelo browser: `http://localhost:4200/`

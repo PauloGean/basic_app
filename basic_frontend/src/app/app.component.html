@@ -1,30 +1,29 @@
 <mat-toolbar color="primary" class="bar-principal">
 
-    <button mat-button routerLink="/"><mat-icon>windows</mat-icon></button>
+  <button mat-button routerLink="/"><mat-icon>windows</mat-icon></button>
 
-    <diV>
-      <button mat-button *ngIf="isAuthenticated"  routerLink="/user-list">
-        <mat-icon>supervisor_account</mat-icon>
-        Usuários
-      </button>
-  
-      <button mat-button *ngIf="isAuthenticated"  routerLink="/userchart">
-        <mat-icon>insert_chart</mat-icon>
-        Gráficos
-      </button>
+  <diV>
+    <button mat-button *ngIf="isAuthenticated" routerLink="/user-list">
+      <mat-icon>supervisor_account</mat-icon>
+      Usuários
+    </button>
 
-    </diV>
+    <button mat-button *ngIf="isAuthenticated" routerLink="/userchart">
+      <mat-icon>insert_chart</mat-icon>
+      Gráficos
+    </button>
+  </diV>
 
-    <div>
-      <span class="user-name">{{getUser()}}</span>
+  <div>
+    <span class="user-name">{{getUser()}}</span>
 
-      <button mat-button *ngIf="isAuthenticated" (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-        Logout
-      </button>
-    </div>
+    <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </div>
 
 
-  
+
 </mat-toolbar>
 <router-outlet></router-outlet>
