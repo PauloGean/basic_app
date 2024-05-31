@@ -6,13 +6,13 @@ Abaixo telas do sistema
 
 
 ## Tela de Login
-<img src="login.png" alt="Login">
+<img src="login.PNG" alt="Login">
 
 ## Gráfico Quantitativo de Usuários
-<img src="user-chart.png" alt="Login">
+<img src="user-chart.PNG" alt="Login">
 
 ## Lista de Usuário
-<img src="user-list.png" alt="Login">
+<img src="user-list.PNG" alt="Login">
 
 ## Cadastro/Edição de Usuário
 <img src="user-edit.PNG" alt="Login">
