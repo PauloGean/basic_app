@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../dialog/dialog.component';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-user-list',
@@ -29,10 +30,11 @@ export class UserListComponent {
   constructor(
     private service:UserService,
     private toastr: ToastrService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   
-  ) {     this.search();
-
+  ) {   
+      this.search();
     }
 
 
@@ -44,6 +46,10 @@ export class UserListComponent {
       this.dataSource = new MatTableDataSource<User>( this.userList);
       this.selection.clear();
     });
+  }
+
+  public isDeletable(entity: User){
+    return this.authService.getUserAuth().user_id!==entity.id;
   }
 
   public delete(entity: User): void {

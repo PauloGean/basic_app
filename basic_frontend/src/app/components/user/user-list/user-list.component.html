@@ -1,7 +1,7 @@
 
 <div class="div-container">
 
-<h2>Usuarios</h2>
+<h2>Usuários</h2>
 
 
 <mat-card class="card-filter">
@@ -65,8 +65,8 @@
         routerLink="/user/{{element.id}}">
         <mat-icon  class="icon-green" aria-hidden="false">edit</mat-icon>
       </button>
-      <button   mat-button>
-        <mat-icon  class="icon-red" aria-hidden="false" (click)="delete(element)">delete</mat-icon>
+      <button   mat-button [disabled]="!isDeletable(element)" (click)="delete(element)">
+        <mat-icon  class="icon-red" aria-hidden="false"  >delete</mat-icon>
       </button>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

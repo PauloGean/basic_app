@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login():void {
-    console.log(this.username);
     this._authService.login({'email': this.username, 'password': this.password});
   }
  

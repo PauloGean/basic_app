@@ -1,24 +1,24 @@
 <div class="div-container">
 
-  <h2 *ngIf="!isNew">Editar Usuarios</h2>
-  <h2  *ngIf="isNew">Cadastrar Usuarios</h2>
+  <h2 *ngIf="!isNew">Novo Usuário</h2>
+  <h2  *ngIf="isNew">Cadastrar Usuário</h2>
   <form #componentForm="ngForm" (ngSubmit)="!componentForm.valid || saveOrUpdate()" novalidate
    >
     <mat-card fxLayout="column" >
-      <div>
+      
         <mat-form-field >
           <input matInput type="email" id="email" name="email" [(ngModel)]="entityForm.email" required
             placeholder="Email">
         </mat-form-field>
-      </div>
+    
 
-      <div   >
+      <div >
         <mat-form-field >
           <input matInput type="password" id="password" name="password" [(ngModel)]="entityForm.password" required
             placeholder="Password">
         </mat-form-field>
       </div>
-      <div   >
+      <div>
         <mat-form-field >
           <input matInput type="text" id="first_name" name="first_name" [(ngModel)]="entityForm.first_name" required
             placeholder="Nome">
@@ -26,12 +26,12 @@
       </div>
 
       <div>
-
         <mat-form-field >
           <input matInput type="text" id="last_name" name="last_name" [(ngModel)]="entityForm.last_name" required
             placeholder="Sobrenome">
         </mat-form-field>
       </div>
+      
       <div>
         <mat-checkbox id="is_active" name="is_active" [(ngModel)]="entityForm.is_active">Está ativo</mat-checkbox>
       </div>

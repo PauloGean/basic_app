@@ -6,9 +6,9 @@ services:
     image: postgres:13.3-buster
     hostname: postgres
     ports:
-      - 5437:5432
+      - 5438:5432
     expose:
-      - 5437
+      - 5438
     environment:
       - POSTGRES_DB=basic_db
       - POSTGRES_PASSWORD=password123

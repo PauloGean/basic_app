@@ -1,15 +1,15 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="bar-principal">
 
     <button mat-button routerLink="/">{{title}}</button>
 
     <button mat-button *ngIf="isAuthenticated"  routerLink="/user-list">
       <mat-icon>supervisor_account</mat-icon>
-      Usuarios
+      Usuários
     </button>
 
     <button mat-button *ngIf="isAuthenticated"  routerLink="/userchart">
       <mat-icon>insert_chart</mat-icon>
-      Graficos
+      Gráficos
     </button>
     
     <span class="example-spacer"></span>
